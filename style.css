@@ -1,0 +1,162 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #202124;
+  --white: #fff;
+  --lightgray: #dfe1e5;
+  --gray: #70757a;
+  --darkgray: #3c4043;
+}
+
+body {
+  margin: 0;
+  color: var(--black);
+  background: var(--white);
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+body,
+h1 {
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+.main-header {
+  width: 100%;
+  background-color: inherit;
+}
+
+.mobile .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger {
+  padding: 18px;
+}
+
+.mobile .user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.mobile .logo {
+  width: 92px;
+}
+
+.search-section {
+  background-color: inherit;
+  position: relative;
+  top: 46px;
+  padding: 5 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  padding: 0 20px;
+  width: 1109px;
+  height: 72px;
+}
+
+.search-input {
+  border: 1px solid var(--lightgray);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  margin-left: 20px;
+  width: 50%;
+  width: 690px;
+}
+
+.search-input input {
+  border: none;
+  flex: 1 1 auto;
+  margin-right: 10px;
+}
+
+.search-input > img + img {
+  margin-left: 10px;
+}
+
+.search-section .menu {
+  display: flex;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.main-footer {
+  padding-top: 40px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.main-footer .country {
+  font-size: 16px;
+  line-height: 35px;
+}
+
+.main-footer .location {
+  line-height: 20px;
+}
+
+.location span {
+  color: var(--darkgray);
+  font-weight: bold;
+}
+
+.footer-links {
+  margin-top: 10px;
+  line-height: 35px;
+}
+
+.footer-links > ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.footer-links li {
+  padding-left: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--gray);
+}
+
+.footer-links a:hover,
+.footer-links a:active {
+  color: var(--darkgray);
+}
+
+.footer-links a:visited {
+  color: inherit;
+}
+
+@media (min-width: 1024px) {
+  .mobile {
+    display: none;
+  }
+}
