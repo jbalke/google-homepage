@@ -30,6 +30,11 @@ h1 {
   font-size: 14px;
 }
 
+main {
+  flex-grow: 1;
+  background-color: var(--white);
+}
+
 .invisible {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -189,11 +194,6 @@ h1 {
 .search-categories .category.selected {
   color: var(--blue);
   border-bottom: 2px solid var(--blue);
-}
-
-.main {
-  flex-grow: 1;
-  background-color: var(--white);
 }
 
 .result-card {
