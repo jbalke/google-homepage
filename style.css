@@ -11,23 +11,46 @@
   --gray: #70757a;
   --darkgray: #3c4043;
   --blue: #1a73e8;
+  --darkblue: #1558d6;
 }
 
 body {
   margin: 0;
   color: var(--black);
-  background: var(--white);
-  display: flex;
-  flex-flow: column nowrap;
-  min-height: 100vh;
+  background: var(--gray);
   width: 100vw;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body,
 h1 {
   font-family: arial, sans-serif;
   font-size: 14px;
+}
+
+.invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  z-index: -1000;
+  -webkit-user-select: none;
+}
+
+.container {
+  color: var(--black);
+  background: var(--white);
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  max-width: 500px;
+  min-height: 90vh;
 }
 
 .bold {
@@ -93,15 +116,39 @@ h1 {
   color: var(--black);
 }
 
+.iconBtn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--gray);
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background-color: transparent;
+}
+
+.icon svg {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
 .search-icon {
-  padding: 0 8px;
-  order: -1;
+  margin: 0 8px;
 }
-.voice-icon {
-  padding: 0 10px;
-}
+
 .clear-icon {
-  display: none;
+  margin: 0 10px;
+}
+
+.dropdown-icon {
+  position: absolute;
+  left: 13px;
 }
 
 .search-section .menu {
@@ -113,23 +160,30 @@ h1 {
 }
 
 .search-categories {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  background-color: var(--white);
   display: flex;
   height: 40px;
   line-height: 27px;
   color: var(--gray);
+  background-color: var(--white);
   text-transform: uppercase;
   border-bottom: 2px solid var(--lightgray);
   padding-left: 11px;
   box-shadow: 0px 7px 6px -5px #dfe1e5;
+  overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
+}
+
+.search-categories::-webkit-scrollbar {
+  width: 0;
+  display: none;
 }
 
 .search-categories .category {
   margin-top: 8px;
   padding: 0 16px;
+  text-decoration: none;
+  color: var(--gray);
 }
 
 .search-categories .category.selected {
@@ -142,23 +196,108 @@ h1 {
   background-color: var(--white);
 }
 
-.results {
-}
-.results-stats {
-  display: none;
-}
-
 .result-card {
+  display: block;
   border: 1px solid var(--lightgray);
   background-color: var(--white);
   border-radius: 5px;
-  margin: 0 5px;
-  padding: 10px;
+  margin: 10px;
   box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
 }
 
-.result-card + .result-card {
-  margin-top: 5px;
+.result-card > a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  margin-bottom: -16px;
+}
+
+.result-source-link {
+  color: var(--black);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.result-source-link .page-title {
+  color: var(--gray);
+}
+
+.result-source-link img {
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
+}
+
+.result-title {
+  color: var(--darkblue);
+  font-family: Roboto, HelveticaNeue, Arial, sans-serif !important;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: none;
+}
+
+.result-date {
+  color: var(--gray);
+}
+
+.result-abstract {
+  font-family: Roboto, HelveticaNeue, Arial, sans-serif !important;
+  color: var(--black);
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.related-searches {
+  margin: 10px;
+}
+
+.related-searches > h3 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #202124;
+  padding: 16px 0;
+}
+
+.related-search-terms > a {
+  display: block;
+  padding: 16px 10px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  border-top: 1px solid var(--lightgray);
+  text-decoration: none;
+  color: var(--black);
+}
+
+.see-more-results {
+  margin: 16px;
+  padding: 10px;
+  line-height: 24px;
+  height: 44px;
+  position: relative;
+  border: 1px solid var(--lightgray);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.see-more-results > a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.undecorated-heading {
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
 }
 
 .main-footer {
@@ -170,6 +309,7 @@ h1 {
   text-align: center;
   font-size: 14px;
   color: var(--gray);
+  background-color: var(--lightgray);
 }
 
 .main-footer .country {
@@ -223,7 +363,4 @@ h1 {
 
 .footer-links a:visited {
   color: inherit;
-}
-
-@media (min-width: 1024px) {
 }
